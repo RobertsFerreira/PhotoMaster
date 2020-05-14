@@ -1,2 +1,2 @@
 # PhotoMaster
- Reposito com Apk e Servidor
+ Repositório com arquivos do Aplicativo e do Servidor.
