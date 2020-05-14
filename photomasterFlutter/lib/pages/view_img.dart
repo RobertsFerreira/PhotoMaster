@@ -13,6 +13,7 @@ class _ViewImageState extends State<ViewImage> {
   String imagem1;
   String imagem2;
   String imagem3;
+  String imagem4;
   String imagemFundo;
   String original;
 
@@ -28,6 +29,7 @@ class _ViewImageState extends State<ViewImage> {
         imagem1 = "http://robertferreira.ddns.net:5000/receberfoto/negativo";
         imagem2 = "http://robertferreira.ddns.net:5000/receberfoto/logaritmo";
         imagem3 = "http://robertferreira.ddns.net:5000/receberfoto/logInverso";
+        imagem4 = "http://robertferreira.ddns.net:5000/receberfoto/prewitt";
         original = "http://robertferreira.ddns.net:5000/receberfoto/original";
         imagemFundo = original;
 
@@ -35,6 +37,7 @@ class _ViewImageState extends State<ViewImage> {
           imagem1,
           imagem2,
           imagem3,
+          imagem4,
           original,
         ];
       },
