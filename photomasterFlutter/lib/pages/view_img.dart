@@ -34,11 +34,11 @@ class _ViewImageState extends State<ViewImage> {
         imagemFundo = original;
 
         listaimagens = [
+          original,
           imagem1,
           imagem2,
           imagem3,
           imagem4,
-          original,
         ];
       },
     );
@@ -54,21 +54,33 @@ class _ViewImageState extends State<ViewImage> {
     double _size = 44;
     return Container(
       padding: EdgeInsets.all(8),
-      child: ClipOval(
-        // button color
-        child: InkWell(
-          splashColor: Colors.red, // inkwell color
-          child: SizedBox(
-              width: _size,
-              height: _size,
-              child: Image(
-                image: NetworkImage(imagem),
-                fit: BoxFit.cover,
-              )),
-          onTap: () {
-            _popUpImage(imagem, context);
-          },
-        ),
+      child: Column(
+        children: <Widget>[
+          ClipOval(
+            // button color
+            child: InkWell(
+              splashColor: Colors.red, // inkwell color
+              child: SizedBox(
+                  width: _size,
+                  height: _size,
+                  child: Image(
+                    image: NetworkImage(imagem),
+                    fit: BoxFit.cover,
+                  )),
+              onTap: () {
+                _popUpImage(imagem, context);
+              },
+            ),
+          ),
+          Text(
+            imagem.toString().replaceAll(
+                "http://robertferreira.ddns.net:5000/receberfoto/", ""),
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -123,7 +135,7 @@ class _ViewImageState extends State<ViewImage> {
                       ],
                     ),
                     padding: EdgeInsets.all(15),
-                    height: 90,
+                    height: 107,
                     width: double.parse((listaimagens.length * 68).toString()),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
