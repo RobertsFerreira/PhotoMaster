@@ -25,6 +25,7 @@ def enviarfoto():
     changefiltro('negativo', filename)
     changefiltro('logaritmo', filename)
     changefiltro('logInverso', filename)
+    changefiltro('prewitt', filename)
 
     print('foi')
 
@@ -44,6 +45,8 @@ def receberfoto(filtro):
         caminhofoto = "ImagemComlogInverso.png"
     elif filtro == "original":
         caminhofoto = "Original.png"
+    elif filtro == "prewitt":
+        caminhofoto = "ImagemcomPrewitt.png"
 
     return send_file(caminhofoto, mimetype='image/png')
 
