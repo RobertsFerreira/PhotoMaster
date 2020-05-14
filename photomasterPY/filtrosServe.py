@@ -208,6 +208,6 @@ def changefiltro(filtronome, nomefoto):
     elif filtronome == 'logInverso':
         logInverso(105.88, nomefoto)
     elif filtronome == 'prewitt':
-        logInverso(nomefoto)
+        prewitt(nomefoto)
     else:
         print("nada")
