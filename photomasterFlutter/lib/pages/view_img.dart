@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:photomaster/pages/img_bg.dart';
@@ -18,6 +17,13 @@ class _ViewImageState extends State<ViewImage> {
   String original;
 
   List listaimagens = [];
+
+  _recebeLista() async{
+
+    String url = "http://robertferreira.ddns.net:5000/enviarfoto";
+    var response = await http.get(url,);
+    print(response.body);
+  }
 
   @override
   void initState() {

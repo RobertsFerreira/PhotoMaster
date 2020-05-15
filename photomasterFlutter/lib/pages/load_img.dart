@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:photomaster/pages/ed_img.dart';
+import 'package:photomaster/pages/screen_error.dart';
 import 'package:photomaster/pages/view_img.dart';
 
 class LoadImg extends StatefulWidget {
@@ -69,7 +70,7 @@ class _LoadImgState extends State<LoadImg> {
               );
             default:
               if (snapshot.hasError) {
-                return Center(child: Text("Erro ao acessar"));
+                return TelaError();
               } else {
                 return TelaClose();
               }
@@ -129,6 +130,6 @@ class _TelaCloseState extends State<TelaClose> {
           height: 15,
         )
       ],
-    ));
+    ),);
   }
 }

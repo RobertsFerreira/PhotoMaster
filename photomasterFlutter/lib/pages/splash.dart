@@ -1,5 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:photomaster/pages/error_page.dart';
 import 'package:photomaster/pages/telainicial.dart';
 import 'package:http/http.dart' as http;
 
@@ -68,7 +69,7 @@ class _SplashState extends State<Splash> {
               );
             default:
               if (snapshot.hasError) {
-                return Center(child: Text("Erro ao acessar"));
+                return ErrorPage();
               } else {
                 return TelaInicial();
               }
@@ -78,3 +79,4 @@ class _SplashState extends State<Splash> {
     );
   }
 }
+

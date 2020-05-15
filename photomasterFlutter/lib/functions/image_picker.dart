@@ -12,6 +12,7 @@ _imagePickerButton(texto, funcao) {
 
 _imagePickerFunction(context, imagesource) async {
   File imgFile = await ImagePicker.pickImage(source: imagesource);
+  Navigator.pop(context);
   if (imgFile == null) return;
   Navigator.push(
     context,
