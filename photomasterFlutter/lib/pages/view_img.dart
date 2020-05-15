@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -9,20 +11,28 @@ class ViewImage extends StatefulWidget {
 }
 
 class _ViewImageState extends State<ViewImage> {
-  String imagem1;
-  String imagem2;
-  String imagem3;
-  String imagem4;
   String imagemFundo;
-  String original;
+  String json;
 
   List listaimagens = [];
 
-  _recebeLista() async{
+  _recebeLista() async {
+    String url = "http://robertferreira.ddns.net:5000/lista";
+    var response = await http.get(
+      url,
+    );
+    json = response.body;
 
-    String url = "http://robertferreira.ddns.net:5000/enviarfoto";
-    var response = await http.get(url,);
-    print(response.body);
+    List map = jsonDecode(json);
+
+    listaimagens.clear();
+
+    for (var m in map) {
+      listaimagens.add(m["imagem"]);
+    }
+    setState(() {
+      print("");
+    });
   }
 
   @override
@@ -32,20 +42,9 @@ class _ViewImageState extends State<ViewImage> {
     setState(
       () {
         imageCache.clear();
-        imagem1 = "http://robertferreira.ddns.net:5000/receberfoto/negativo";
-        imagem2 = "http://robertferreira.ddns.net:5000/receberfoto/logaritmo";
-        imagem3 = "http://robertferreira.ddns.net:5000/receberfoto/logInverso";
-        imagem4 = "http://robertferreira.ddns.net:5000/receberfoto/prewitt";
-        original = "http://robertferreira.ddns.net:5000/receberfoto/original";
-        imagemFundo = original;
-
-        listaimagens = [
-          original,
-          imagem1,
-          imagem2,
-          imagem3,
-          imagem4,
-        ];
+        imagemFundo =
+            "http://robertferreira.ddns.net:5000/receberfoto/original";
+        _recebeLista();
       },
     );
   }
