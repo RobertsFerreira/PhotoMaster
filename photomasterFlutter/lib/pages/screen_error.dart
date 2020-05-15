@@ -1,5 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:photomaster/widgets/background/im_bg_without_wave.dart';
 
 class TelaError extends StatefulWidget {
   @override
@@ -21,20 +22,7 @@ class _TelaErrorState extends State<TelaError> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.1, 1.2],
-                colors: [
-                  Color(0xFFF92B7F),
-                  Color(0xFFF58524),
-                ],
-              ),
-            ),
-          ),
+          IMBGW(),
           Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

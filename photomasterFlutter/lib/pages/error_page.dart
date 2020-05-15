@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photomaster/pages/splash.dart';
+import 'package:photomaster/widgets/background/im_bg_without_wave.dart';
 
 class ErrorPage extends StatelessWidget {
   @override
@@ -7,20 +8,7 @@ class ErrorPage extends StatelessWidget {
     return Scaffold(
         body: Stack(
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.1, 1.2],
-              colors: [
-                Color(0xFFF92B7F),
-                Color(0xFFF58524),
-              ],
-            ),
-          ),
-        ),
+        IMBGW(),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

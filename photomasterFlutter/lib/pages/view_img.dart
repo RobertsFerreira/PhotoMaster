@@ -1,9 +1,8 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:photomaster/pages/img_bg.dart';
+import 'package:photomaster/widgets/background/img_bg.dart';
 
 class ViewImage extends StatefulWidget {
   @override

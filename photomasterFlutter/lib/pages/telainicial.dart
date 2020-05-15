@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:photomaster/functions/exit_app.dart';
 import 'package:photomaster/functions/image_picker.dart';
-import 'package:photomaster/pages/img_bg.dart';
-import 'package:photomaster/widgets/button.dart';
+import 'package:photomaster/widgets/background/img_bg.dart';
+import 'package:photomaster/widgets/buttons/button.dart';
 
 class TelaInicial extends StatefulWidget {
   @override

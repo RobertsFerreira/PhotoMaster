@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:photomaster/pages/img_bg.dart';
 import 'package:photomaster/pages/load_img.dart';
+import 'package:photomaster/widgets/background/img_bg.dart';
+import 'package:photomaster/widgets/buttons/buttonwithouticon.dart';
 import 'dart:io';
-
-import 'package:photomaster/widgets/buttonwithouticon.dart';
 
 class EscolheFiltro extends StatefulWidget {
   final File fileImage;
