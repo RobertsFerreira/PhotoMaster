@@ -31,6 +31,7 @@ dependencies:
   dio: ^3.0.9
   downloads_path_provider: ^0.1.0
   permission_handler: ^5.0.0+hotfix.6
+  progress_dialog: ^1.2.3
 
 dev_dependencies:
   flutter_test:

@@ -73,7 +73,7 @@ class _ViewImageState extends State<ViewImage> {
                   child: Image(
                     image: NetworkImage(imagem),
                     fit: BoxFit.cover,
-                  )),
+                  ),),
               onTap: () {
                 _popUpImage(imagem, context);
               },
@@ -147,6 +147,14 @@ class _ViewImageState extends State<ViewImage> {
                           builder: (BuildContext context) {
                             return AlertDialog(
                               title: Text("Donwload Concluido!"),
+                              actions: <Widget>[
+                                FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("OK"),
+                                )
+                              ],
                             );
                           });
                     },
