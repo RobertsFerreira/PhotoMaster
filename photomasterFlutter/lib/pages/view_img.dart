@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:photomaster/widgets/background/img_bg.dart';
+import 'package:dio/dio.dart';
+import 'package:downloads_path_provider/downloads_path_provider.dart';
 
 class ViewImage extends StatefulWidget {
   @override
@@ -84,6 +87,16 @@ class _ViewImageState extends State<ViewImage> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(top: 2),
+            height: 5,
+            width: 15,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color:
+                  imagem == imagemFundo ? Colors.blue[300] : Colors.transparent,
+            ),
+          ),
         ],
       ),
     );
@@ -103,7 +116,42 @@ class _ViewImageState extends State<ViewImage> {
           ),
           backgroundColor: Color(0xFFF92B7F),
           centerTitle: true,
-          actions: <Widget>[],
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.file_download,
+                color: imagemFundo.replaceAll(
+                            "http://robertferreira.ddns.net:5000/receberfoto/",
+                            "") ==
+                        "original"
+                    ? Colors.transparent
+                    : Colors.white,
+              ),
+              onPressed: imagemFundo.replaceAll(
+                          "http://robertferreira.ddns.net:5000/receberfoto/",
+                          "") ==
+                      "original"
+                  ? null
+                  : () async {
+                      Map<Permission, PermissionStatus> statuses =
+                          await [Permission.storage].request();
+                      print(statuses);
+                      final output =
+                          await DownloadsPathProvider.downloadsDirectory;
+                      Dio dio = Dio();
+                      var response = await dio.download(imagemFundo,
+                          "${output.path}/${imagemFundo.replaceAll('http://robertferreira.ddns.net:5000/receberfoto/', '')}.jpg");
+                      print(response);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Donwload Concluido!"),
+                            );
+                          });
+                    },
+            ),
+          ],
         ),
         body: Stack(
           children: <Widget>[
@@ -139,7 +187,8 @@ class _ViewImageState extends State<ViewImage> {
                       ],
                     ),
                     padding: EdgeInsets.all(15),
-                    height: 107,
+                    height: 115,
+                    // height: 107,
                     width: double.parse((listaimagens.length * 68).toString()),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -150,9 +199,9 @@ class _ViewImageState extends State<ViewImage> {
                     ),
                   ),
                 ),
-                Container(
-                  height: 10,
-                ),
+                // Container(
+                //   height: 10,
+                // ),
               ],
             ),
           ],
