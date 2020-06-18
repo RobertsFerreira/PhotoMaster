@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:photomaster/dados.dart';
 import 'package:photomaster/pages/ed_img.dart';
 import 'package:photomaster/pages/screen_error.dart';
 import 'package:photomaster/pages/view_img.dart';
@@ -23,7 +24,7 @@ class _LoadImgState extends State<LoadImg> {
 
   _enviarfoto(imagem) async {
     file = imagem;
-    String url = "http://robertferreira.ddns.net:5000/enviarfoto";
+    String url = "$urlMaster/enviarfoto";
     var bytes = file.readAsBytesSync();
     var response = await http.post(url,
         headers: {"Content-Type": "image/png"},

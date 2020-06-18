@@ -4,6 +4,8 @@ import 'package:photomaster/pages/error_page.dart';
 import 'package:photomaster/pages/telainicial.dart';
 import 'package:http/http.dart' as http;
 
+import '../dados.dart';
+
 class Splash extends StatefulWidget {
   @override
   _SplashState createState() => _SplashState();
@@ -11,7 +13,7 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   _recebeTeste() async {
-    String url = "http://robertferreira.ddns.net:5000/teste";
+    String url = "$urlMaster/teste";
     var response = await http.get(url);
     print(response.body);
   }
@@ -79,4 +81,3 @@ class _SplashState extends State<Splash> {
     );
   }
 }
-

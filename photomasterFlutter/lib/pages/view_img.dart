@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:photomaster/dados.dart';
 import 'package:photomaster/widgets/background/img_bg.dart';
 import 'package:dio/dio.dart';
 import 'package:downloads_path_provider/downloads_path_provider.dart';
@@ -19,7 +20,7 @@ class _ViewImageState extends State<ViewImage> {
   List listaimagens = [];
 
   _recebeLista() async {
-    String url = "http://robertferreira.ddns.net:5000/lista";
+    String url = "$urlMaster/lista";
     var response = await http.get(
       url,
     );
@@ -44,8 +45,7 @@ class _ViewImageState extends State<ViewImage> {
     setState(
       () {
         imageCache.clear();
-        imagemFundo =
-            "http://robertferreira.ddns.net:5000/receberfoto/original";
+        imagemFundo = "$urlMaster/receberfoto/original";
         _recebeLista();
       },
     );
@@ -68,20 +68,20 @@ class _ViewImageState extends State<ViewImage> {
             child: InkWell(
               splashColor: Colors.red, // inkwell color
               child: SizedBox(
-                  width: _size,
-                  height: _size,
-                  child: Image(
-                    image: NetworkImage(imagem),
-                    fit: BoxFit.cover,
-                  ),),
+                width: _size,
+                height: _size,
+                child: Image(
+                  image: NetworkImage(imagem),
+                  fit: BoxFit.cover,
+                ),
+              ),
               onTap: () {
                 _popUpImage(imagem, context);
               },
             ),
           ),
           Text(
-            imagem.toString().replaceAll(
-                "http://robertferreira.ddns.net:5000/receberfoto/", ""),
+            imagem.toString().replaceAll("$urlMaster/receberfoto/", ""),
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -120,44 +120,41 @@ class _ViewImageState extends State<ViewImage> {
             IconButton(
               icon: Icon(
                 Icons.file_download,
-                color: imagemFundo.replaceAll(
-                            "http://robertferreira.ddns.net:5000/receberfoto/",
-                            "") ==
+                color: imagemFundo.replaceAll("$urlMaster/receberfoto/", "") ==
                         "original"
                     ? Colors.transparent
                     : Colors.white,
               ),
-              onPressed: imagemFundo.replaceAll(
-                          "http://robertferreira.ddns.net:5000/receberfoto/",
-                          "") ==
-                      "original"
-                  ? null
-                  : () async {
-                      Map<Permission, PermissionStatus> statuses =
-                          await [Permission.storage].request();
-                      print(statuses);
-                      final output =
-                          await DownloadsPathProvider.downloadsDirectory;
-                      Dio dio = Dio();
-                      var response = await dio.download(imagemFundo,
-                          "${output.path}/${imagemFundo.replaceAll('http://robertferreira.ddns.net:5000/receberfoto/', '')}.jpg");
-                      print(response);
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text("Donwload Concluido!"),
-                              actions: <Widget>[
-                                FlatButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text("OK"),
-                                )
-                              ],
-                            );
-                          });
-                    },
+              onPressed:
+                  imagemFundo.replaceAll("$urlMaster/receberfoto/", "") ==
+                          "original"
+                      ? null
+                      : () async {
+                          Map<Permission, PermissionStatus> statuses =
+                              await [Permission.storage].request();
+                          print(statuses);
+                          final output =
+                              await DownloadsPathProvider.downloadsDirectory;
+                          Dio dio = Dio();
+                          var response = await dio.download(imagemFundo,
+                              "${output.path}/${imagemFundo.replaceAll('$urlMaster/receberfoto/', '')}.jpg");
+                          print(response);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Donwload Concluido!"),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("OK"),
+                                    )
+                                  ],
+                                );
+                              });
+                        },
             ),
           ],
         ),
