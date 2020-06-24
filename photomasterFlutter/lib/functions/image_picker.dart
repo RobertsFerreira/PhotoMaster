@@ -10,21 +10,36 @@ _imagePickerButton(texto, funcao) {
   );
 }
 
-_imagePickerFunction(context, imagesource) async {
+_imagePickerFunction(context, imagesource, {type}) async {
   File imgFile = await ImagePicker.pickImage(source: imagesource);
   Navigator.pop(context);
   if (imgFile == null) return;
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => LoadImg(
-        file: imgFile,
+  if (type == null) {
+    return;
+  }
+  if (type == "f") {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoadImg(
+          file: imgFile,
+        ),
       ),
-    ),
-  );
+    );
+  }
+  if (type == "r") {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoadImg(
+          file: imgFile,
+        ),
+      ),
+    );
+  }
 }
 
-imagePicker(context) {
+imagePicker(context, {type}) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -34,13 +49,13 @@ imagePicker(context) {
           _imagePickerButton(
             "Camera",
             () async {
-              _imagePickerFunction(context, ImageSource.camera);
+              _imagePickerFunction(context, ImageSource.camera, type:type);
             },
           ),
           _imagePickerButton(
             "Galeria",
             () async {
-              _imagePickerFunction(context, ImageSource.gallery);
+              _imagePickerFunction(context, ImageSource.gallery, type:type);
             },
           ),
         ],

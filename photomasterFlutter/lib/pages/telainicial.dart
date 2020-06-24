@@ -49,7 +49,7 @@ class _TelaInicialState extends State<TelaInicial> {
                     Center(
                       child: ButtonTelaInicial(
                           'Filtros para Fotos', Icons.filter, () async {
-                        imagePicker(context);
+                        imagePicker(context, type: "f");
                       }),
                     ),
                     Padding(
@@ -58,12 +58,7 @@ class _TelaInicialState extends State<TelaInicial> {
                     Center(
                       child: ButtonTelaInicial(
                           'Identificação de Objetos', Icons.camera, () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => IdentificaObjeto(),
-                          ),
-                        );
+                        imagePicker(context, type: "r");
                       }),
                     ),
                   ],
