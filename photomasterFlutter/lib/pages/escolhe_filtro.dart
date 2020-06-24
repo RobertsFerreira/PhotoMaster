@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photomaster/pages/load_img.dart';
 import 'package:photomaster/widgets/background/img_bg.dart';
-import 'package:photomaster/widgets/buttons/buttonwithouticon.dart';
 import 'dart:io';
 
 class EscolheFiltro extends StatefulWidget {
@@ -47,19 +45,6 @@ class _EscolheFiltroState extends State<EscolheFiltro> {
                         left: 15,
                         top: 80,
                       ),
-                    ),
-                    BtnWithoutIcon(
-                      "Negativo",
-                      () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoadImg(
-                              file: imageFile,
-                            ),
-                          ),
-                        );
-                      },
                     ),
                   ],
                 )

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photomaster/dados.dart';
+import 'package:photomaster/functions/exit_app.dart';
+import 'package:photomaster/pages/telainicial.dart';
 import 'package:photomaster/widgets/background/img_bg.dart';
 import 'package:dio/dio.dart';
 import 'package:downloads_path_provider/downloads_path_provider.dart';
@@ -106,8 +108,9 @@ class _ViewImageState extends State<ViewImage> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return true;
-      },
+          returnScreen(context, TelaInicial());
+          return false;
+        },
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,

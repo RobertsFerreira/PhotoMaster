@@ -4,6 +4,8 @@ import 'package:photomaster/functions/image_picker.dart';
 import 'package:photomaster/widgets/background/img_bg.dart';
 import 'package:photomaster/widgets/buttons/button.dart';
 
+import 'identificaObejto.dart';
+
 class TelaInicial extends StatefulWidget {
   @override
   _TelaInicialState createState() => _TelaInicialState();
@@ -55,7 +57,14 @@ class _TelaInicialState extends State<TelaInicial> {
                     ),
                     Center(
                       child: ButtonTelaInicial(
-                          'Identificação de Objetos', Icons.camera, () {}),
+                          'Identificação de Objetos', Icons.camera, () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => IdentificaObjeto(),
+                          ),
+                        );
+                      }),
                     ),
                   ],
                 ),
