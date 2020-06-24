@@ -23,6 +23,7 @@ _imagePickerFunction(context, imagesource, {type}) async {
       MaterialPageRoute(
         builder: (context) => LoadImg(
           file: imgFile,
+          url: "enviarfoto",
         ),
       ),
     );
@@ -33,6 +34,7 @@ _imagePickerFunction(context, imagesource, {type}) async {
       MaterialPageRoute(
         builder: (context) => LoadImg(
           file: imgFile,
+          url: "caminho",
         ),
       ),
     );
@@ -49,13 +51,13 @@ imagePicker(context, {type}) {
           _imagePickerButton(
             "Camera",
             () async {
-              _imagePickerFunction(context, ImageSource.camera, type:type);
+              _imagePickerFunction(context, ImageSource.camera, type: type);
             },
           ),
           _imagePickerButton(
             "Galeria",
             () async {
-              _imagePickerFunction(context, ImageSource.gallery, type:type);
+              _imagePickerFunction(context, ImageSource.gallery, type: type);
             },
           ),
         ],

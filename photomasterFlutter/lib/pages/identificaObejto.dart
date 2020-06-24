@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:photomaster/functions/exit_app.dart';
-import 'package:photomaster/pages/telainicial.dart';
 import 'package:photomaster/widgets/background/im_bg_without_wave.dart';
 
 class IdentificaObjeto extends StatefulWidget {

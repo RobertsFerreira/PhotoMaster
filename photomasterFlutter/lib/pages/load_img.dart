@@ -10,21 +10,24 @@ import 'package:photomaster/pages/view_img.dart';
 
 class LoadImg extends StatefulWidget {
   final File file;
+  final String url;
 
-  LoadImg({Key key, @required this.file}) : super(key: key);
+  LoadImg({Key key, @required this.file, @required this.url}) : super(key: key);
   @override
   _LoadImgState createState() => _LoadImgState(
         imgFile: file,
+        caminho: url,
       );
 }
 
 class _LoadImgState extends State<LoadImg> {
   final File imgFile;
-  _LoadImgState({Key key, @required this.imgFile});
+  final String caminho;
+  _LoadImgState({Key key, @required this.imgFile, @required this.caminho});
 
   _enviarfoto(imagem) async {
     file = imagem;
-    String url = "$urlMaster/enviarfoto";
+    String url = "$urlMaster/$caminho";
     var bytes = file.readAsBytesSync();
     var response = await http.post(url,
         headers: {"Content-Type": "image/png"},
