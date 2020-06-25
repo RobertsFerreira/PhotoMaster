@@ -23,7 +23,7 @@ _imagePickerFunction(context, imagesource, {type}) async {
       MaterialPageRoute(
         builder: (context) => LoadImg(
           file: imgFile,
-          url: "enviarfoto",
+          urlHttp: "enviarfoto",
         ),
       ),
     );
@@ -34,7 +34,7 @@ _imagePickerFunction(context, imagesource, {type}) async {
       MaterialPageRoute(
         builder: (context) => LoadImg(
           file: imgFile,
-          url: "caminho",
+          urlHttp: "caminho",
         ),
       ),
     );

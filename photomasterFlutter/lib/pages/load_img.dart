@@ -10,13 +10,13 @@ import 'package:photomaster/pages/view_img.dart';
 
 class LoadImg extends StatefulWidget {
   final File file;
-  final String url;
+  final String urlHttp;
 
-  LoadImg({Key key, @required this.file, @required this.url}) : super(key: key);
+  LoadImg({Key key, @required this.file, @required this.urlHttp}) : super(key: key);
   @override
   _LoadImgState createState() => _LoadImgState(
         imgFile: file,
-        caminho: url,
+        caminho: urlHttp,
       );
 }
 
