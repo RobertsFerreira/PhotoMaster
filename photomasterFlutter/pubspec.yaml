@@ -28,7 +28,7 @@ dependencies:
   wave: ^0.0.8
   http: ^0.13.5
   meet_network_image: ^0.1.2 
-  dio: ^3.0.9
+  dio: ^5.0.3
   downloads_path_provider: ^0.1.0
   permission_handler: ^5.0.0+hotfix.6
   progress_dialog: ^1.2.3
